@@ -33,15 +33,15 @@ int main()
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-    auto texture_shader = std::make_unique<ShaderProgram>("/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Shaders/texture.vert",
-            "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Shaders/texture.frag");
+    auto texture_shader = std::make_unique<ShaderProgram>("/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Shaders/texture.vert",
+            "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Shaders/texture.frag");
 
     Sprite::shader_program = texture_shader.get();
     //Quad quad(0, 0, 600, 400, false);
-    Sprite quad(0, 0, 600, 400, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Images/mod.png");
-    Sprite opengl(100, 100, 400, 200, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Images/opengl.png");
-    Sprite obama(200, 200, 100, 100, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Images/obamium.png");
-    Sprite marco(400, 400, 100, 100, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/Engine/Resources/Images/marco.jpg");
+    Sprite quad(0, 0, 600, 400, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Images/mod.png");
+    Sprite opengl(100, 100, 400, 200, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Images/opengl.png");
+    Sprite obama(200, 200, 100, 100, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Images/obamium.png");
+    Sprite marco(400, 400, 100, 100, "/Users/edoardobiasio/Desktop/programmi_fallimentari/cpp_engine/bizlib2/Resources/Images/marco.jpg");
     quad.scale(Vector2<f32>(0.5, 0.5));
     f32 vx = 5, vy = -5;
     f32 x = 1, y = 1;
