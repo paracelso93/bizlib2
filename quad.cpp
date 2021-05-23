@@ -19,13 +19,8 @@ Quad::Quad(i32 x, i32 y, i32 w, i32 h, bool textured)
 
     glGenVertexArrays(1, &m_VAO);
     bind();
+    color = glm::vec4(1.0);
 
-    /*f32 vertices[] = {
-        new_x,  new_y, 0.0f,
-        new_x,new_y - new_h, 0.0f,
-        new_x + new_w, new_y - new_h, 0.0f,
-        new_x + new_w,  new_y, 0.0f
-    };*/
     if (textured) {
         f32 vertices[] = {
                 0.0,  0.0, 0.0f, 0.0, 0.0,
@@ -39,7 +34,7 @@ Quad::Quad(i32 x, i32 y, i32 w, i32 h, bool textured)
             0, 2, 3
         };
 
-       // GLuint VBO, EBO;
+
         glGenBuffers(1, &VBO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), (GLvoid*)vertices, GL_STATIC_DRAW);
@@ -56,6 +51,7 @@ Quad::Quad(i32 x, i32 y, i32 w, i32 h, bool textured)
 
         unbind();
     } else {
+        color = glm::vec4(1.0);
         f32 vertices[] = {
                 0.0,  0.0, 0.0f,
                 0.0, -new_h, 0.0f,
@@ -106,34 +102,24 @@ void Quad::applyTransform()
 
     m_transform = glm::translate(m_transform, glm::vec3(-center.x, -center.y, 0.0));
     m_transform = glm::scale(m_transform, glm::vec3(m_size.x, m_size.y, 1.0));
-   /* m_transform = glm::scale(m_transform, glm::vec3(m_size.x, m_size.y, 1.0));
-
-    m_transform = glm::translate(m_transform, glm::vec3(-center.x, -center.y, 0.0));
-    m_transform = glm::rotate(m_transform, rotation, glm::vec3(0.0, 0.0, 1.0));
-    m_transform = glm::translate(m_transform, glm::vec3(center.x, center.y, 0.0));
-
-    m_transform = glm::translate(m_transform, glm::vec3(m_position.x, m_position.y, 0.0));
-*/
-    //m_transform = glm::scale(m_transform, glm::vec3(m_size.x, m_size.y, 1.0));
 }
 
 void Quad::applyTransformTopLeft()
 {
     m_transform = glm::mat4(1.0f);
-    //auto center = getCenter();
 
     m_transform = glm::scale(m_transform, glm::vec3(m_size.x, m_size.y, 1.0));
     m_transform = glm::translate(m_transform, glm::vec3(m_position.x, m_position.y, 0.0));
 
-    //m_transform = glm::translate(m_transform, glm::vec3((m_position.x - center.x) * m_size.x, (m_position.y - center.y) * m_size.y, 0.0));
     m_transform = glm::rotate(m_transform, rotation, glm::vec3(0.0, 0.0, 1.0));
-    //m_transform = glm::translate(m_transform, glm::vec3(-(m_position.x - center.x) * m_size.x, -(m_position.y - center.y) * m_size.y, 0.0));
-
-
-    //m_transform = glm::scale(m_transform, glm::vec3(m_size.x, m_size.y, 1.0));
 }
 
 Vector2<f32> Quad::getCenter() const
 {
     return Vector2<f32>(m_size.x * m_originalSize.x / 2, -m_originalSize.y * m_size.y / 2);
+}
+
+void Quad::setColor(f32 r, f32 g, f32 b, f32 a)
+{
+    color = glm::vec4(r, g, b, a);
 }

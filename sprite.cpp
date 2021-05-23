@@ -66,6 +66,7 @@ void Sprite::render() {
     m_quad.applyTransform();
     shader_program->applyUniformMat4("transform", m_quad.m_transform);
     shader_program->applyUniform1i("texture_sampler", 0);
+    shader_program->applyUniform4f("in_color", m_quad.color);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_texture);

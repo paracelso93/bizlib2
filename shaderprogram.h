@@ -23,6 +23,11 @@ public:
         glUniform1i(location, value);
     }
 
+    void applyUniform4f(const std::string& position, const glm::vec4& value) {
+        GLint location = glGetUniformLocation(m_program, position.c_str());
+        glUniform4fv(location, 1, glm::value_ptr(value));
+    }
+
     void bind();
     void unbind();
 
